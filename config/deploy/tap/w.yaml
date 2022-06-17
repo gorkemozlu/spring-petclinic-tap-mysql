@@ -9,6 +9,6 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/gorkemozlu/sample-nodejs-app
+      url: https://github.com/gorkemozlu/spring-petclinic-tap-mysql
       ref:
         branch: main
