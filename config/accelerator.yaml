@@ -1,6 +1,6 @@
 accelerator:
-  displayName: NodeJS Boiler Plate
-  description: Accelerator to create NodeJS Projects
+  displayName: SpringBoot with Data Services
+  description: Accelerator to create SpringBoot Projects with Data Services
   iconUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png
   tags:
   - cloud-native-developers
