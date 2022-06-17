@@ -88,11 +88,11 @@ engine:
     #generic transformations
     - includes: ["**"]
       excludes: [ "config/**" ]
-      chain:
-        - type: ReplaceText
-          substitutions:
-            - text: app-name
-              with: "#parentApp"
+      #chain:
+      #  - type: ReplaceText
+      #    substitutions:
+      #      - text: app-name
+      #        with: "#parentApp"
   #deployment configs per type
     - includes: [ "config/tap/**"]
       condition: "#appDeploymentType == 'tap'"
