@@ -1,0 +1,10 @@
+#@data/values
+---
+addDB: true
+namespaceToDeploy: dev
+dbName: inventory
+hasTests: false
+gitRepo: https://github.com/gorkemozlu/spring-petclinic-tap-mysql
+dbType: MySQL
+parentApp: petclinic-app
+artifactId: asd
