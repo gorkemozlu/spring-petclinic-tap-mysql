@@ -12,3 +12,9 @@ spec:
       url: https://github.com/gorkemozlu/spring-petclinic-tap-mysql
       ref:
         branch: main
+  serviceClaims:
+    - name: mycluster-claim
+      ref:
+        apiVersion: services.tanzu.vmware.com/v1alpha1
+        kind: MySQL
+        name: mycluster

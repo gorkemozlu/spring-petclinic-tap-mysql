@@ -49,22 +49,6 @@ spec:
       url: #@ data.values.gitRepo
       ref:
         branch: "main"
-  env:
-    - name: RDS_HOSTNAME
-      value: #@ data.values.dbName
-    - name: RDS_USERNAME
-      value: #@ data.values.dbName
-    - name: RDS_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: mysql-pass
-          key: rootPassword
-    - name: RDS_DBNAME
-      value: #@ data.values.dbName
-    - name: RDS_PORT
-      value: '3306'
-    - name: NODE_ENV
-      value: production
 
   #@ if data.values.addDB:
   serviceClaims:

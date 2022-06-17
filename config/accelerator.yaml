@@ -110,10 +110,12 @@ engine:
       chain:
         - type: YTT
     #    - type: YTT
-    - includes: [ "config/cf/*.json" ]
-      condition: "#appDeploymentType == 'cf'"
+
+    #data entity transformations
+    - includes: [ "src/main/resources/application.properties" ]
+      condition: "#addDB == 'true'"
       chain:
         - type: ReplaceText
           substitutions:
-          - text: app-name
-            with: "#artifactId"
+            - text: petclinic-db
+              with: "#dbName"
