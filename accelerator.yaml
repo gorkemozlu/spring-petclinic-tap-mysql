@@ -20,7 +20,7 @@ accelerator:
     description: Name of the parent application this component is a part of
     inputType: text
     dataType: string
-    defaultValue: my-nodejs-main-app
+    defaultValue: petclinic-app
 
   - name: hasTests
     label: CI Test
