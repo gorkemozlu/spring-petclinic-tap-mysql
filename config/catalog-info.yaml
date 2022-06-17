@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: spring-petclinic-tap-mysql
+  description: Tanzu Spring Petclinic Web App
+  tags:
+    - app-accelerator
+    - nodejs
+    - web
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=spring-petclinic-tap-mysql'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-team
