@@ -1,0 +1,18 @@
+apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
+kind: Accelerator
+metadata:
+  name: spring-data-services
+spec:
+  displayName: Spring Petclinic with Data Services
+  description: Gorkems Spring Petclinic with Data Services Option
+  iconUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/800px-Spring_Framework_Logo_2018.svg.png
+  tags:
+    - spring
+    - cloud
+    - function
+    - cloud-native-developers
+  git:
+    ignore: ".git/, bin/"
+    url: https://github.com/gorkemozlu/spring-petclinic-tap-mysql
+    ref:
+      branch: main

@@ -86,13 +86,13 @@ accelerator:
 engine:
   merge:
     #generic transformations
-    - includes: ["**"]
-      excludes: [ "config/**" ]
-      chain:
-        - type: ReplaceText
-          substitutions:
-            - text: app-name
-              with: "#artifactId"
+    #- includes: ["**"]
+    #  excludes: [ "config/**" ]
+    #  chain:
+    #    - type: ReplaceText
+    #      substitutions:
+    #        - text: app-name
+    #          with: "#artifactId"
   #deployment configs per type
     - includes: [ "config/tap/**"]
       condition: "#appDeploymentType == 'tap'"
