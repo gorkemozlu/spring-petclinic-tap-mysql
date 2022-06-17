@@ -8,7 +8,7 @@ metadata:
     - nodejs
     - web
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=spring-petclinic-tap-mysql'
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=petclinic-app'
 spec:
   type: service
   lifecycle: experimental
