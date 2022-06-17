@@ -94,15 +94,15 @@ engine:
       #      - text: app-name
       #        with: "#parentApp"
   #deployment configs per type
-    - includes: [ "config/tap/**"]
+    - includes: [ "config/deploy/tap/**"]
       condition: "#appDeploymentType == 'tap'"
       chain:
         - type: YTT
-    - includes: [ "config/cf/**"]
+    - includes: [ "config/deploy/cf/**"]
       condition: "#appDeploymentType == 'cf'"
       chain:
         - type: YTT
-    - includes: [ "config/k8s/**"]
+    - includes: [ "config/deploy/k8s/**"]
       condition: "#appDeploymentType == 'k8s'"
       chain:
         - type: YTT
