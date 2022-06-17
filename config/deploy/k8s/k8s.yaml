@@ -1,0 +1,126 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-pass
+type: kubernetes.io/basic-auth
+stringData:
+  password: top-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: mysql
+    tier: mysql
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  labels:
+    app: mysql
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: mysql
+    spec:
+      containers:
+      - image: quay.io/bitnami/mysql:5.7
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app-ui
+  labels:
+    app: sample-app-ui
+spec:
+  selector:
+    matchLabels:
+      app: sample-app-ui
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sample-app-ui
+    spec:
+      containers:
+      - image: harbor.dorn.gorke.ml/nodejs/sample-app-mysql
+        name: sample-app-ui
+        env:
+        - name: RDS_HOSTNAME
+          value: '10.213.217.67'
+        - name: RDS_USERNAME
+          value: 'root'
+        - name: RDS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        - name: RDS_DBNAME
+          value: 'sample-app'
+        - name: RDS_PORT
+          value: '3306'
+        - name: NODE_ENV
+          value: 'production'
+        ports:
+        - containerPort: 3000
+          name: sample-app-ui
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-app-ui
+  labels:
+    app: sample-app-ui
+spec:
+  ports:
+    - port: 3000
+  selector:
+    app: sample-app-ui
+  type: LoadBalancer
