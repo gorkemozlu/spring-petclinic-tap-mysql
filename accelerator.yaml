@@ -1,0 +1,121 @@
+accelerator:
+  displayName: SpringBoot with Data Services
+  description: Accelerator to create SpringBoot Projects with Data Services
+  iconUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png
+  tags:
+  - cloud-native-developers
+
+  options:
+  
+         
+  - name: gitRepo
+    label: Git repo
+    inputType: text
+    required: true
+    dataType: string
+    defaultValue: https://github.com/gorkemozlu/spring-petclinic-tap-mysql
+    
+  - name: parentApp
+    label: Name of parent application (the Big A app)
+    description: Name of the parent application this component is a part of
+    inputType: text
+    dataType: string
+    defaultValue: my-nodejs-main-app
+
+  - name: hasTests
+    label: CI Test
+    inputType: checkbox
+    display: true
+    required: true
+    dataType: boolean
+    defaultValue: false
+
+  - name: branchName
+    label: Branch of the Repo
+    description: Please type the branch to develop
+    inputType: text
+    dataType: string
+    defaultValue: main
+
+  - name: namespaceToDeploy
+    label: Namespace to deploy
+    description: Please type the namespace to deploy
+    inputType: text
+    dataType: string
+    defaultValue: dev
+
+  #data services
+  - name: addDB
+    label: Create a SQL database
+    inputType: checkbox
+    display: true
+    dataType: boolean
+    defaultValue: false
+  
+  - name: dbType
+    label: SQL Database type
+    dependsOn:
+      name: addDB
+    inputType: select
+    defaultValue: MySQL
+    choices:
+      - value: postgres
+        text: Postgres
+      - value: MySQL
+        text: MySQL
+  - name: dbName
+    label: SQL Database instance name
+    defaultValue: inventory
+    dependsOn:
+      name: addDB
+      
+  #deployment type (for demo vision paiting)
+  - name: appDeploymentType
+    label: Deployment environment
+    description: Type of deployment configurations
+    defaultValue: tap
+    inputType: select
+    choices:
+    - value: tap
+      text: Tanzu App Platform workload
+    - value: k8s
+      text: K8s deployment with Skaffold configs
+    - value: cf
+      text: Tanzu App Service manifest
+
+engine:
+  merge:
+    #generic transformations
+    - includes: ["**"]
+      excludes: [ "config/**" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#artifactId"
+  #deployment configs per type
+    - includes: [ "config/tap/**"]
+      condition: "#appDeploymentType == 'tap'"
+      chain:
+        - type: YTT
+    - includes: [ "config/cf/**"]
+      condition: "#appDeploymentType == 'cf'"
+      chain:
+        - type: YTT
+    - includes: [ "config/k8s/**"]
+      condition: "#appDeploymentType == 'k8s'"
+      chain:
+        - type: YTT
+    - includes: [ "config/backstage/**"]
+      chain:
+        - type: YTT
+    #    - type: YTT
+
+    #data entity transformations
+    - includes: [ "src/main/resources/application.properties" ]
+      condition: "#addDB == 'true'"
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: petclinic-db
+              with: "#dbName"
