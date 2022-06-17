@@ -13,7 +13,7 @@ accelerator:
     inputType: text
     required: true
     dataType: string
-    defaultValue: https://github.com/gorkemozlu/nodejs-boilerplate
+    defaultValue: https://github.com/gorkemozlu/spring-petclinic-tap-mysql
     
   - name: parentApp
     label: Name of parent application (the Big A app)
