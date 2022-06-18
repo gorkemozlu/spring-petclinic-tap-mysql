@@ -4,10 +4,9 @@ metadata:
   name: spring-data-services
 spec:
   displayName: Spring Petclinic with Data Services
-  description: |
-    Gorkems Spring Petclinic with Data Services Option
-    kubectl -n accelerator-system port-forward svc/acc-server 8877:80
-    tanzu accelerator generate spring-data-services --server-url http://localhost:8877 --options='{"gitRepo":"https://github.com/gorkemozlu/spring-petclinic-tap-mysql","parentApp":"petclinic-app","hasTests":false,"addToComponent":true,"branchName":"main","namespaceToDeploy":"my-apps","addDB":true,"dbType":"MySQL","dbName":"petclinic-db","appDeploymentType":"tap"}'
+  description: Gorkems Spring Petclinic with Data Services Option
+    
+    
   iconUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/800px-Spring_Framework_Logo_2018.svg.png
   tags:
     - spring
