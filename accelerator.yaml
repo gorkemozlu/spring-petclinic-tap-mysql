@@ -30,6 +30,14 @@ accelerator:
     dataType: boolean
     defaultValue: false
 
+  - name: addToComponent
+    label: Add this app to organization catalog to review resources after the deployment
+    inputType: checkbox
+    display: true
+    required: true
+    dataType: boolean
+    defaultValue: false
+
   - name: branchName
     label: Branch of the Repo
     description: Please type the branch to develop

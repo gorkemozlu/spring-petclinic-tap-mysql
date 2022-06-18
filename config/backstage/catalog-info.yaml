@@ -4,7 +4,11 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: #@ data.values.parentApp
-  description: Backstage GUI component config
+  description: Gorkems Spring Petclinic App
+  tags:
+    - app-accelerator
+    - spring
+    - web
   annotations:
     'backstage.io/kubernetes-label-selector': #@ "app.kubernetes.io/part-of:" + data.values.parentApp
 spec:

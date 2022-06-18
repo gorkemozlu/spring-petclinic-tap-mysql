@@ -12,7 +12,7 @@ spec:
     - function
     - cloud-native-developers
   git:
-    ignore: ".git/, bin/"
+    ignore: ".git/, target/"
     url: https://github.com/gorkemozlu/spring-petclinic-tap-mysql
     ref:
       branch: main
