@@ -23,6 +23,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: petclinic-db
+  app.kubernetes.io/part-of: #@ data.values.parentApp
   namespace: #@ data.values.namespaceToDeploy
   labels:
     app: petclinic-db
@@ -92,6 +93,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: petclinic-db
+  app.kubernetes.io/part-of: #@ data.values.parentApp
   namespace: #@ data.values.namespaceToDeploy
 spec:
   ports:
