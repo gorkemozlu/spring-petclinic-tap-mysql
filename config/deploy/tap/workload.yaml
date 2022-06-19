@@ -78,7 +78,7 @@ metadata:
   namespace: #@ data.values.namespaceToDeploy
   labels:
     app: petclinic-db
-    app.kubernetes.io/part-of: #@ data.values.parentApp + "-db
+    app.kubernetes.io/part-of: #@ data.values.parentApp + "-db"
 spec:
   ports:
   - name: mysql
