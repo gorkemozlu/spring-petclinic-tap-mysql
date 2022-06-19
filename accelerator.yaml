@@ -128,7 +128,7 @@ engine:
 
     #data entity transformations
     - includes: [ "src/main/resources/application.properties" ]
-      condition: "#addDB == 'true'"
+      #condition: "#addDB == 'true'"
       chain:
         - type: ReplaceText
           substitutions:
