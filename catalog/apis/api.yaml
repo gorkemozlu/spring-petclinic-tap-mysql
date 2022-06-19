@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: spring-petclinic-api
+  description: API for Spring Petclinic
+  tags:
+    - spring petclinic
+  annotations:
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: team-petclinic-product-catalog
+  system: spring-petclinic-apis-system
+  definition:
+    $text: ../../src/main/resources/openapi.yaml

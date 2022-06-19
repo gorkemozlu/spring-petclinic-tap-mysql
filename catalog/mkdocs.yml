@@ -1,0 +1,7 @@
+site_name: 'spring-petclinic-apis-location'
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core

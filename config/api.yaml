@@ -1,0 +1,462 @@
+openapi: 3.0.1
+info:
+  description: "## Spring Petclinic API Reference: Product Catalog Management\n\n### Release\
+    \ : 20.5 - June 2022\n\nProduct Catalog API is one of Catalog Management API\
+    \ Family. Product Catalog API goal is to provide a catalog of products. \n\n###\
+    \ Operations\nProduct Catalog API performs the following operations on the resources\
+    \ :\n- Retrieve an entity or a collection of entities depending on filter criteria\n\
+    - Partial update of an entity (including updating rules)\n- Create an entity (including\
+    \ default values and creation rules)\n- Delete an entity\n- Manage notification\
+    \ of events"
+  title: Spring Petclinic Management
+  version: 4.1.0
+servers:
+- url: https://serverRoot/
+tags:
+- name: catalog
+- name: category
+paths:
+  /oups:
+    get:
+      description: This operation shows error page
+      operationId: oups
+      summary: error page
+      tags:
+      - oups
+      x-accepts: application/json;charset=utf-8
+      x-tags:
+      - tag: oups
+  /owners:
+    get:
+      description: This operation lists owners page
+      operationId: owners
+      summary: lists owners page
+      tags:
+      - owners
+      x-accepts: application/json;charset=utf-8
+      x-tags:
+      - tag: owners
+  /owners/{ownerId}:
+    get:
+      description: This operation lists specific owner page
+      parameters:
+        ownerId: path
+        name: ownerId
+        required: true
+        schema:
+          type: string
+      operationId: owners
+      summary: lists specific owner page
+      tags:
+      - owners
+      x-accepts: application/json;charset=utf-8
+      x-tags:
+      - tag: owners
+components:
+  schemas:
+    Catalog:
+      description: A collection of Product Offerings, intended for a specific DistributionChannel,
+        enhanced with additional information such as SLA parameters, invoicing and
+        shipping details
+      example:
+        catalogType: catalogType
+        lifecycleStatus: lifecycleStatus
+        validFor:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        '@type': '@type'
+        description: description
+        relatedParty:
+        - '@referredType': '@referredType'
+          role: role
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+        - '@referredType': '@referredType'
+          role: role
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+        version: version
+        '@baseType': '@baseType'
+        lastUpdate: 2000-01-23T04:56:07.000+00:00
+        name: name
+        id: id
+        href: href
+        category:
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          version: version
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          version: version
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: Unique identifier of the Catalog
+          type: string
+        href:
+          description: Unique reference of the catalog
+          type: string
+        catalogType:
+          description: Indicates if the catalog is a product, service or resource
+            catalog
+          type: string
+        description:
+          description: Description of this catalog
+          type: string
+        lastUpdate:
+          description: Date and time of the last update
+          format: date-time
+          type: string
+        lifecycleStatus:
+          description: Used to indicate the current lifecycle status
+          type: string
+        name:
+          description: Name of the catalog
+          type: string
+        version:
+          description: Catalog version
+          type: string
+        category:
+          description: List of root categories contained in this catalog
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+          type: array
+        relatedParty:
+          description: List of parties involved in this catalog
+          items:
+            $ref: '#/components/schemas/RelatedParty'
+          type: array
+        validFor:
+          $ref: '#/components/schemas/TimePeriod'
+        '@baseType':
+          description: When sub-classing, this defines the super-class
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: When sub-classing, this defines the sub-class Extensible name
+          type: string
+      type: object
+    Catalog_Create:
+      description: |-
+        A collection of Product Offerings, intended for a specific DistributionChannel, enhanced with additional information such as SLA parameters, invoicing and shipping details
+        Skipped properties: id,href
+      properties:
+        catalogType:
+          description: Indicates if the catalog is a product, service or resource
+            catalog
+          type: string
+        description:
+          description: Description of this catalog
+          type: string
+        lastUpdate:
+          description: Date and time of the last update
+          format: date-time
+          type: string
+        lifecycleStatus:
+          description: Used to indicate the current lifecycle status
+          type: string
+        name:
+          description: Name of the catalog
+          type: string
+        version:
+          description: Catalog version
+          type: string
+        category:
+          description: List of root categories contained in this catalog
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+          type: array
+        relatedParty:
+          description: List of parties involved in this catalog
+          items:
+            $ref: '#/components/schemas/RelatedParty'
+          type: array
+        validFor:
+          $ref: '#/components/schemas/TimePeriod'
+        '@baseType':
+          description: When sub-classing, this defines the super-class
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: When sub-classing, this defines the sub-class Extensible name
+          type: string
+      required:
+      - name
+      type: object
+    Catalog_Update:
+      description: |-
+        A collection of Product Offerings, intended for a specific DistributionChannel, enhanced with additional information such as SLA parameters, invoicing and shipping details
+        Skipped properties: id,href,lastUpdate,@type,@baseType
+      properties:
+        catalogType:
+          description: Indicates if the catalog is a product, service or resource
+            catalog
+          type: string
+        description:
+          description: Description of this catalog
+          type: string
+        lifecycleStatus:
+          description: Used to indicate the current lifecycle status
+          type: string
+        name:
+          description: Name of the catalog
+          type: string
+        version:
+          description: Catalog version
+          type: string
+        category:
+          description: List of root categories contained in this catalog
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+          type: array
+        relatedParty:
+          description: List of parties involved in this catalog
+          items:
+            $ref: '#/components/schemas/RelatedParty'
+          type: array
+        validFor:
+          $ref: '#/components/schemas/TimePeriod'
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+      type: object
+    Category:
+      description: The category resource is used to group product offerings, service
+        and resource candidates in logical containers. Categories can contain other
+        categories and/or product offerings, resource or service candidates.
+      example:
+        subCategory:
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          version: version
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          version: version
+        isRoot: true
+        lifecycleStatus: lifecycleStatus
+        productOffering:
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+        validFor:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        '@type': '@type'
+        description: description
+        version: version
+        parentId: parentId
+        '@baseType': '@baseType'
+        lastUpdate: 2000-01-23T04:56:07.000+00:00
+        name: name
+        id: id
+        href: href
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: Unique identifier of the category
+          type: string
+        href:
+          description: Reference of the category
+          type: string
+        description:
+          description: Description of the category
+          type: string
+        isRoot:
+          description: If true, this Boolean indicates that the category is a root
+            of categories
+          type: boolean
+        lastUpdate:
+          description: Date and time of the last update
+          format: date-time
+          type: string
+        lifecycleStatus:
+          description: Used to indicate the current lifecycle status
+          type: string
+        name:
+          description: Name of the category
+          type: string
+        parentId:
+          description: Unique identifier of the parent category
+          type: string
+        version:
+          description: Category version
+          type: string
+        productOffering:
+          description: A product offering represents entities that are orderable from
+            the provider of the catalog, this resource includes pricing information.
+          items:
+            $ref: '#/components/schemas/ProductOfferingRef'
+          type: array
+        subCategory:
+          description: The category resource is used to group product offerings, service
+            and resource candidates in logical containers. Categories can contain
+            other (sub-)categories and/or product offerings.
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+          type: array
+        validFor:
+          $ref: '#/components/schemas/TimePeriod'
+        '@baseType':
+          description: When sub-classing, this defines the super-class
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: When sub-classing, this defines the sub-class Extensible name
+          type: string
+      type: object
+    Category_Create:
+      description: |-
+        The category resource is used to group product offerings, service and resource candidates in logical containers. Categories can contain other categories and/or product offerings, resource or service candidates.
+        Skipped properties: id,href
+      properties:
+        description:
+          description: Description of the category
+          type: string
+        isRoot:
+          description: If true, this Boolean indicates that the category is a root
+            of categories
+          type: boolean
+        lastUpdate:
+          description: Date and time of the last update
+          format: date-time
+          type: string
+        lifecycleStatus:
+          description: Used to indicate the current lifecycle status
+          type: string
+        name:
+          description: Name of the category
+          type: string
+        parentId:
+          description: Unique identifier of the parent category
+          type: string
+        version:
+          description: Category version
+          type: string
+        productOffering:
+          description: A product offering represents entities that are orderable from
+            the provider of the catalog, this resource includes pricing information.
+          items:
+            $ref: '#/components/schemas/ProductOfferingRef'
+          type: array
+        subCategory:
+          description: The category resource is used to group product offerings, service
+            and resource candidates in logical containers. Categories can contain
+            other (sub-)categories and/or product offerings.
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+          type: array
+        validFor:
+          $ref: '#/components/schemas/TimePeriod'
+        '@baseType':
+          description: When sub-classing, this defines the super-class
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: When sub-classing, this defines the sub-class Extensible name
+          type: string
+      required:
+      - name
+      type: object
+    Category_Update:
+      description: |-
+        The category resource is used to group product offerings, service and resource candidates in logical containers. Categories can contain other categories and/or product offerings, resource or service candidates.
+        Skipped properties: id,href,lastUpdate,@type,@baseType
+      properties:
+        description:
+          description: Description of the category
+          type: string
+        isRoot:
+          description: If true, this Boolean indicates that the category is a root
+            of categories
+          type: boolean
+        lifecycleStatus:
+          description: Used to indicate the current lifecycle status
+          type: string
+        name:
+          description: Name of the category
+          type: string
+        parentId:
+          description: Unique identifier of the parent category
+          type: string
+        version:
+          description: Category version
+          type: string
+        productOffering:
+          description: A product offering represents entities that are orderable from
+            the provider of the catalog, this resource includes pricing information.
+          items:
+            $ref: '#/components/schemas/ProductOfferingRef'
+          type: array
+        subCategory:
+          description: The category resource is used to group product offerings, service
+            and resource candidates in logical containers. Categories can contain
+            other (sub-)categories and/or product offerings.
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+          type: array
+        validFor:
+          $ref: '#/components/schemas/TimePeriod'
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+      type: object
+x-original-swagger-version: "2.0"

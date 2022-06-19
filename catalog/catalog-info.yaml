@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: spring-petclinic-apis-location
+  description: Spring Petclinic APIs
+  annotations:
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  targets:
+    - ./systems/tmf-apis-system.yaml
+    - ./groups/org.yaml
+    - ./components/database/component-mongo.yaml
+    - ./apis/api.yaml
+    - ./components/service/component.yaml

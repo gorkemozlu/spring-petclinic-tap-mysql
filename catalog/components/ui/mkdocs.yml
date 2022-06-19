@@ -1,0 +1,7 @@
+site_name: 'spring-petclinic-ui'
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core

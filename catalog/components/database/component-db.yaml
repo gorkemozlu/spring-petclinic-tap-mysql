@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: spring-petclinic-tap-db
+  description: Tanzu Spring Petclinic Database
+  tags:
+    - app-accelerator
+    - mysql
+    - db
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=petclinic-app-db'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: team-petclinic-product-catalog
+  system: spring-petclinic-apis-system

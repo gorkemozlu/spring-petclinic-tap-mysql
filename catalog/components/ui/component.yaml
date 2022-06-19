@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: spring-petclinic-ui
+  description: Spring Petclinic API
+  tags:
+    - tmf620
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=spring-petclinic-ui'
+    'backstage.io/techdocs-ref': dir:.
+  links:
+    - url: https://github.com/spring-projects/spring-petclinic
+      title: Spring Petclinic App
+spec:
+  type: service
+  lifecycle: experimental
+  owner: team-petclinic-product-catalog
+  system: spring-petclinic-apis-system
+  dependsOn:
+    - Component:spring-petclinic-db
+  providesApis:
+    - spring-petclinic-ui

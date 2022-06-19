@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name:  spring-petclinic-apis-system
+  description: Spring Petclinic APIs
+  annotations:
+    'backstage.io/techdocs-ref': dir:.
+spec:
+  owner: team-petclinic-product-catalog

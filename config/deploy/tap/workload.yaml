@@ -23,7 +23,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: petclinic-db
-  app.kubernetes.io/part-of: #@ data.values.parentApp
+  app.kubernetes.io/part-of: #@ data.values.parentApp + "-db"
   namespace: #@ data.values.namespaceToDeploy
   labels:
     app: petclinic-db
@@ -93,7 +93,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: petclinic-db
-  app.kubernetes.io/part-of: #@ data.values.parentApp
+  app.kubernetes.io/part-of: #@ data.values.parentApp + "-db"
   namespace: #@ data.values.namespaceToDeploy
 spec:
   ports:
@@ -113,7 +113,7 @@ metadata:
   namespace: #@ data.values.namespaceToDeploy
   labels:
     apps.tanzu.vmware.com/workload-type: web
-    app.kubernetes.io/part-of: #@ data.values.parentApp
+    app.kubernetes.io/part-of: #@ data.values.parentApp + "-ui"
     #@ if data.values.hasTests:
     apps.tanzu.vmware.com/has-tests: "true"
     #@ end
