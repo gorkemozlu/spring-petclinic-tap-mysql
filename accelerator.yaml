@@ -134,3 +134,13 @@ engine:
           substitutions:
             - text: petclinic-db
               with: "#dbName"
+    - includes: [ "Tiltfile" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: app-name
+              with: "#parentApp"
+        - type: ReplaceText
+          substitutions:
+            - text: nspace
+              with: "#namespaceToDeploy"
