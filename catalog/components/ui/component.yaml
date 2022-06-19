@@ -6,7 +6,7 @@ metadata:
   tags:
     - spring
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=spring-petclinic-ui'
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=petclinic-app-ui'
     'backstage.io/techdocs-ref': dir:.
   links:
     - url: https://github.com/spring-projects/spring-petclinic
