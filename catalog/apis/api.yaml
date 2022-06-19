@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: spring-petclinic-api
+  name: spring-petclinic-ui
   description: API for Spring Petclinic
   tags:
     - spring petclinic

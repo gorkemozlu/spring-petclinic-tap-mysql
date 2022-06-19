@@ -1,4 +1,4 @@
-site_name: 'spring-petclinic-api'
+site_name: 'spring-petclinic-ui'
 
 nav:
   - Home: index.md

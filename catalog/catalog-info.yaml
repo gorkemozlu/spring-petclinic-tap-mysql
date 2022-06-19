@@ -7,8 +7,8 @@ metadata:
     'backstage.io/techdocs-ref': dir:.
 spec:
   targets:
-    - ./systems/tmf-apis-system.yaml
+    - ./systems/spring-petclinic-apis-system.yaml
     - ./groups/org.yaml
-    - ./components/database/component-mongo.yaml
+    - ./components/database/component-db.yaml
     - ./apis/api.yaml
-    - ./components/service/component.yaml
+    - ./components/ui/component.yaml
