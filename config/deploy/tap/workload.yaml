@@ -1,22 +1,4 @@
-#@ load("@ytt:data", "data") 
----
-#@ if data.values.addToComponent:
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: #@ data.values.parentApp
-  description: Gorkems Spring Petclinic App
-  tags:
-    - app-accelerator
-    - spring
-    - web
-  annotations:
-    'backstage.io/kubernetes-label-selector': #@ "app.kubernetes.io/part-of:" + data.values.parentApp
-spec:
-  type: service
-  lifecycle: experimental
-  owner: default-team
-#@ end
+#@ load("@ytt:data", "data")
 ---
 #@ if data.values.addDB:
 apiVersion: apps/v1
