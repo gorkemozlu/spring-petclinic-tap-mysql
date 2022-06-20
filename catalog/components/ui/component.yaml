@@ -17,6 +17,6 @@ spec:
   owner: team-petclinic-product-catalog
   system: spring-petclinic-apis-system
   dependsOn:
-    - Component:spring-petclinic-db
+    - component:spring-petclinic-tap-db
   providesApis:
     - spring-petclinic-ui
