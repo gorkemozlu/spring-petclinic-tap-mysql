@@ -4,7 +4,7 @@ metadata:
   name: spring-petclinic-ui
   description: API for Spring Petclinic
   tags:
-    - spring petclinic
+    - spring-petclinic
   annotations:
     'backstage.io/techdocs-ref': dir:.
 spec:
