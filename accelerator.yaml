@@ -71,11 +71,11 @@ accelerator:
         text: Postgres
       - value: mysql
         text: MySQL
-  - name: dbName
-    label: SQL Database instance name
-    defaultValue: inventory
-    dependsOn:
-      name: addDB
+#  - name: dbName
+#    label: SQL Database instance name
+#    defaultValue: inventory
+#    dependsOn:
+#      name: addDB
       
   #deployment type (for demo vision paiting)
   - name: appDeploymentType
@@ -128,12 +128,12 @@ engine:
 
     #data entity transformations
     - includes: [ "src/main/resources/application.properties" ]
-      condition: "#dbName != ''"
+      condition: "#dbType != ''"
       chain:
         - type: ReplaceText
           substitutions:
             - text: petclinic-db
-              with: "#dbName"
+              with: "#dbType" + "-claim"
     - includes: [ "Tiltfile" ]
       chain:
         - type: ReplaceText
