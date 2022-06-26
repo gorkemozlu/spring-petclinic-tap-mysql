@@ -133,7 +133,7 @@ engine:
         - type: ReplaceText
           substitutions:
             - text: petclinic-db
-              with: "#dbType" + "-claim"
+              with: "#dbType+'-claim'"
     - includes: [ "Tiltfile" ]
       chain:
         - type: ReplaceText
