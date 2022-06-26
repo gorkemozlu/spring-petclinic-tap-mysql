@@ -65,11 +65,11 @@ accelerator:
     dependsOn:
       name: addDB
     inputType: select
-    defaultValue: MySQL
+    defaultValue: mysql
     choices:
       - value: postgres
         text: Postgres
-      - value: MySQL
+      - value: mysql
         text: MySQL
   - name: dbName
     label: SQL Database instance name
