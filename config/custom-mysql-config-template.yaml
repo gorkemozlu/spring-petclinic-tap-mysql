@@ -86,21 +86,21 @@ spec:
     apiVersion: apps/v1
     kind: StatefulSet
     metadata:
-      name: petclinic-db
+      name: #@ data.values.workload.metadata.name + '-' + s.name
       namespace: #@ data.values.workload.metadata.namespace
-      labels: #@ merge_labels({"app": "petclinic-db", "app.kubernetes.io/component": "run", "carto.run/workload-name": data.values.workload.metadata.name })
+      labels: #@ merge_labels({"app": data.values.workload.metadata.name + '-' + s.name,"app.kubernetes.io/part-of": data.values.workload.metadata.name + '-db', "app.kubernetes.io/component": "run", "carto.run/workload-name": data.values.workload.metadata.name })
     spec:
       selector:
         matchLabels:
-          app: petclinic-db
-      serviceName: petclinic-db
+          app: #@ data.values.workload.metadata.name + '-' + s.name
+      serviceName: #@ data.values.workload.metadata.name + '-' + s.name
       template:
         metadata:
           labels:
-            app: petclinic-db
+            app: #@ data.values.workload.metadata.name + '-' + s.name
         spec:
           containers:
-          - name: petclinic-db
+          - name: #@ data.values.workload.metadata.name + '-' + s.name
             image: mysql:5.7
             ports:
             - containerPort: 3306
@@ -154,9 +154,9 @@ spec:
     apiVersion: v1
     kind: Service
     metadata:
-      name: petclinic-db
+      name: #@ data.values.workload.metadata.name + '-' + s.name
       namespace: #@ data.values.workload.metadata.namespace
-      labels: #@ merge_labels({"app": "petclinic-db", "app.kubernetes.io/component": "run", "carto.run/workload-name": data.values.workload.metadata.name })
+      labels: #@ merge_labels({"app": data.values.workload.metadata.name + '-' + s.name,"app.kubernetes.io/part-of": data.values.workload.metadata.name + '-db', "app.kubernetes.io/component": "run", "carto.run/workload-name": data.values.workload.metadata.name })
     spec:
       ports:
       - name: mysql
@@ -164,7 +164,7 @@ spec:
         protocol: TCP
         targetPort: 3306
       selector:
-        app: petclinic-db
+        app: #@ data.values.workload.metadata.name + '-' + s.name
       type: ClusterIP
     ---
     apiVersion: servicebinding.io/v1alpha3
