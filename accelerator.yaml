@@ -132,7 +132,7 @@ engine:
       chain:
         - type: ReplaceText
           substitutions:
-            - text: petclinic-db
+            - text: petclinic-app-mysql-claim
               with: "#parentApp+'-'+#dbType+'-claim'"
     - includes: [ "Tiltfile" ]
       chain:
