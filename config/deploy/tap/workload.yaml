@@ -33,6 +33,6 @@ spec:
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
         kind: #@ data.values.dbType 
-        name: #@ data.values.dbType + "-claim"
+        name: #@ data.values.parentApp + "-" + data.values.dbType + "-claim"
     #@ end
   #@ end
