@@ -6,7 +6,7 @@ metadata:
   name: #@ data.values.parentApp
   namespace: #@ data.values.namespaceToDeploy
   labels:
-    #@ if data.values.dbType == MySQL:
+    #@ if data.values.dbType == mysql:
     apps.tanzu.vmware.com/workload-type: web-mysql
     #@ end
     #@ if data.values.dbType == postgres:
