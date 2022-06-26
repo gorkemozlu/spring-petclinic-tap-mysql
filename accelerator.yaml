@@ -70,7 +70,7 @@ accelerator:
       - value: postgres
         text: Postgres
       - value: mysql
-        text: MySQL
+        text: mysql
 #  - name: dbName
 #    label: SQL Database instance name
 #    defaultValue: inventory
