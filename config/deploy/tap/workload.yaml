@@ -6,8 +6,13 @@ metadata:
   name: #@ data.values.parentApp
   namespace: #@ data.values.namespaceToDeploy
   labels:
-    #@ if data.values.addDB:
+    #@ if data.values.dbType == MySQL:
     apps.tanzu.vmware.com/workload-type: web-mysql
+    #@ end
+    #@ if data.values.dbType == postgres:
+    apps.tanzu.vmware.com/workload-type: web-postgres
+    #@ else:
+    apps.tanzu.vmware.com/workload-type: web
     #@ end
     app.kubernetes.io/part-of: #@ data.values.parentApp + "-ui"
     #@ if data.values.hasTests:
@@ -19,7 +24,7 @@ spec:
     git:
       url: #@ data.values.gitRepo
       ref:
-        branch: "main"
+        branch: #@ data.values.branchName
 
   #@ if data.values.addDB:
   serviceClaims:
