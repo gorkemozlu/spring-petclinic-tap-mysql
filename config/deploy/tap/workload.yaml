@@ -29,7 +29,7 @@ spec:
   serviceClaims:
     
     #@ if data.values.addDB:
-    - name: #@ data.values.dbType + "-claim"
+    - name: #@ data.values.parentApp + "-" + data.values.dbType + "-claim"
       ref:
         apiVersion: services.tanzu.vmware.com/v1alpha1
         kind: #@ data.values.dbType 
