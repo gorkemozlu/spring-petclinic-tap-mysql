@@ -83,6 +83,7 @@ spec:
     #@ for s in data.values.workload.spec.serviceClaims:
     #@ if claims_extension == None or claims_extension.get(s.name) == None:
     ---
+    #@ if s.ref.kind == "mysql":
     apiVersion: apps/v1
     kind: StatefulSet
     metadata:
@@ -166,6 +167,7 @@ spec:
       selector:
         app: #@ data.values.workload.metadata.name + '-' + s.name
       type: ClusterIP
+    #@ end
     ---
     apiVersion: servicebinding.io/v1alpha3
     kind: ServiceBinding
